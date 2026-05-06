@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERP Usage Gap Predictor</title>
+
+<style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f4f7f6;
+            color: #2d3748;
+        }
+
+        /* NAVIGATION BAR */
+        nav { 
+            background: #2c3e50; 
+            padding: 1rem; 
+            text-align: center; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+        }
+        nav a { 
+            color: white; 
+            margin: 0 15px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 1.1em; 
+        }
+        nav a:hover { color: #3498db; }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 5px;
+            color: #1a365d;
+        }
+
+        .note {
+            text-align: center;
+            font-size: 0.85em;
+            color: #718096;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            margin-top: 25px;
+            font-size: 1em;
+            color: #2b6cb0;
+            border-left: 4px solid #2b6cb0;
+            padding-left: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        label {
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        select {
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            background: #fff;
+            transition: 0.2s;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(49,130,206,0.15);
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 14px;
+            background: linear-gradient(135deg, #2b6cb0, #1a4f8b);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(43,108,176,0.25);
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .container { margin: 20px 15px; }
+            nav a { margin: 0 5px; font-size: 0.9em; }
+        }
+    </style>
+    
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="dataset.html">Dataset Overview</a>
+    <a href="poster.html">Research Poster</a>
+    <a href="analyzer.html">Usage Analyzer</a>
+</nav>
+
+<div class="container">
+
+    <h2>ERP Usage Analysis</h2>
+    <p class="note">Research Tool for Retail Organizations in Bahrain</p>
+
+    <form action="/predict" method="post">
+
+        <h3>Organization Information</h3>
+
+        <div class="grid">
+            <div class="form-group">
+                <label>Organization Type</label>
+                <select name="ORG_TYPE">
+                    <option>Supermarket</option>
+                    <option>Clothing/Apparel</option>
+                    <option>Electronics</option>
+                    <option>Furniture</option>
+                    <option>Pharmacy</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Your Position</label>
+                <select name="POSITION">
+                    <option>Manager</option>
+                    <option>IT Specialist</option>
+                    <option>Sales/Clerk</option>
+                    <option>Accountant</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>ERP Usage Period</label>
+                <select name="USG_PERIOD">
+                    <option>&lt;6m</option>
+                    <option>6m_1y</option>
+                    <option>1_2y</option>
+                    <option>2_5y</option>
+                    <option>&gt;5y</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>ERP System</label>
+                <select name="ERP_SYS">
+                    <option>SAP</option>
+                    <option>Oracle</option>
+                    <option>Microsoft Dynamics</option>
+                    <option>Odoo</option>
+                </select>
+            </div>
+        </div>
+
+        <h3>Behavioral Indicators</h3>
+
+        <div class="grid">
+            <div class="form-group">
+                <label>Training</label>
+                <select name="TRAINING">
+                    <option>High</option>
+                    <option>Low</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Complexity</label>
+                <select name="COMPLEXITY">
+                    <option>High</option>
+                    <option>Low</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Performance</label>
+                <select name="PERFORMANCE">
+                    <option>High</option>
+                    <option>Low</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Management Support</label>
+                <select name="MGT_SUPPORT">
+                    <option>High</option>
+                    <option>Low</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>External Tools</label>
+                <select name="EXTERNAL_TOOLS">
+                    <option>High</option>
+                    <option>Low</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Monitoring</label>
+                <select name="MONITOR">
+                    <option>High</option>
+                    <option>Low</option>
+                </select>
+            </div>
+        </div>
+
+        <button type="submit">Analyze Usage Gap</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

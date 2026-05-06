@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloads | ERP Research Portal</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; margin: 0; background: #f4f7f6; color: #333; }
+        
+        /* Consistent Navigation */
+        nav { background: #2c3e50; padding: 1rem; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; font-size: 1.1em; }
+        nav a:hover { color: #3498db; }
+
+        .container { max-width: 900px; margin: 40px auto; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        
+        h2 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        p { color: #555; }
+
+        .download-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #fff;
+            border: 1px solid #e1e8ed;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .download-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .file-info h3 { margin: 0; color: #2c3e50; font-size: 1.2em; }
+        .file-info p { margin: 5px 0 0; font-size: 0.9em; color: #7f8c8d; }
+
+        .dl-btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+
+        .dl-btn:hover { background: #2980b9; }
+
+        .file-icon { font-size: 2em; margin-right: 20px; color: #3498db; }
+        
+        .flex-row { display: flex; align-items: center; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="dataset.html">Dataset Overview</a>
+    <a href="poster.html">Research Poster</a>
+    <a href="analyzer.html">Usage Analyzer</a>
+    <a href="downloads.html">Downloads</a>
+</nav>
+
+<div class="container">
+    <h2>Research Resources & Downloads</h2>
+    <p>Access the full technical and academic resources used in the study of ERP Usage Gaps in Bahrain's retail sector.</p>
+
+    <div class="download-card">
+        <div class="flex-row">
+            <div class="file-icon">📄</div>
+            <div class="file-info">
+                <h3>Full Research Paper (PDF)</h3>
+                <p>The complete study including literature review, methodology, and detailed analysis.</p>
+            </div>
+        </div>
+        <a href="full-research.pdf" class="dl-btn" download>Download PDF</a>
+    </div>
+
+    <div class="download-card">
+        <div class="flex-row">
+            <div class="file-icon">🤖</div>
+            <div class="file-info">
+                <h3>T1.model (Weka File)</h3>
+                <p>The trained J48 Decision Tree model for use in Weka or similar ML environments.</p>
+            </div>
+        </div>
+        <a href="T1.model" class="dl-btn" download>Download Model</a>
+    </div>
+
+    <div class="download-card">
+        <div class="flex-row">
+            <div class="file-icon">📊</div>
+            <div class="file-info">
+                <h3>Attribute Metadata (CSV)</h3>
+                <p>A structured list of attributes, categorical values, and data filters applied.</p>
+            </div>
+        </div>
+        <a href="attributes.csv" class="dl-btn" download>Download CSV</a>
+    </div>
+
+</div>
+
+</body>
+</html>

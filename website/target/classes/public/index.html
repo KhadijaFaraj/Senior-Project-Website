@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERP Research Portal | Bahrain Retail</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; margin: 0; background: #f4f7f6; color: #333; }
+        nav { background: #2c3e50; padding: 1rem; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        nav a:hover { color: #3498db; }
+        .hero { background: white; padding: 60px 20px; text-align: center; border-bottom: 3px solid #3498db; }
+        .container { max-width: 900px; margin: 40px auto; padding: 30px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .btn { display: inline-block; background: #3498db; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; margin-top: 20px; font-weight: bold; transition: background 0.3s; }
+        .btn:hover { background: #2980b9; }
+        .tech-badge { background: #ecf0f1; padding: 5px 10px; border-radius: 4px; font-size: 0.9em; color: #2c3e50; font-weight: 600; border-left: 3px solid #3498db; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="dataset.html">Dataset Overview</a>
+    <a href="poster.html">Research Poster</a>
+    <a href="analyzer.html">Usage Analyzer</a>
+</nav>
+
+<div class="hero">
+    <h1>ERP System Usage Patterns</h1>
+    <p>Academic Research: Retail Organizations in the Kingdom of Bahrain</p>
+    <a href="analyzer.html" class="btn">Start System Analysis</a>
+</div>
+
+<div class="container">
+    <h2>Abstract</h2>
+    <p>This project investigates the <strong>"Usage Gap"</strong> in Enterprise Resource Planning (ERP) systems within the retail sector[cite: 19]. By utilizing a <strong>J48 Decision Tree</strong> classifier, we analyze key organizational and behavioral factors to predict and mitigate efficiency gaps.</p>
+    
+    <h3>Key Objectives</h3>
+    <ul>
+        <li>Identify adoption patterns across retail sectors including <span class="tech-badge">Pharmacy</span>, <span class="tech-badge">Supermarket</span>, and <span class="tech-badge">Electronics</span>[cite: 8, 9].</li>
+        <li>Evaluate major ERP vendors such as <span class="tech-badge">SAP</span>, <span class="tech-badge">Oracle</span>, <span class="tech-badge">Microsoft Dynamics</span>, and <span class="tech-badge">Odoo</span>[cite: 12, 20].</li>
+        <li>Predict <strong>GAP</strong> versus <strong>No_Gap</strong> outcomes based on <span class="tech-badge">MGT_SUPPORT</span>, <span class="tech-badge">TRAINING</span>, and <span class="tech-badge">EXTERNAL_TOOLS</span>[cite: 13, 14, 16, 17].</li>
+        <li>Provide actionable insights for roles ranging from <span class="tech-badge">Staff</span> to <span class="tech-badge">Senior Management</span>[cite: 10].</li>
+    </ul>
+
+    <h3>Model Overview</h3>
+    <p>The analysis is powered by the <strong>weka.classifiers.trees.J48</strong> algorithm. The model processes 11 primary attributes to determine if a usage gap exists within a retail environment[cite: 8, 18, 19].</p>
+</div>
+
+</body>
+</html>
