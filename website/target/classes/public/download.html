@@ -7,10 +7,6 @@
     <style>
         body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; margin: 0; background: #f4f7f6; color: #333; }
         
-        /* Consistent Navigation */
-        nav { background: #2c3e50; padding: 1rem; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; font-size: 1.1em; }
-        nav a:hover { color: #3498db; }
 
         .container { max-width: 900px; margin: 40px auto; padding: 30px; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         
@@ -54,16 +50,19 @@
         
         .flex-row { display: flex; align-items: center; }
     </style>
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="dataset.html">Dataset Overview</a>
-    <a href="poster.html">Research Poster</a>
-    <a href="analyzer.html">Usage Analyzer</a>
-    <a href="downloads.html">Downloads</a>
-</nav>
+<div id="navbar"></div>
+
+<script>
+fetch("navbar.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+    });
+</script>
 
 <div class="container">
     <h2>Research Resources & Downloads</h2>

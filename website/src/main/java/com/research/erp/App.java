@@ -71,11 +71,78 @@ public class App {
                 String prediction = datasetStructure.classAttribute().value((int) result).trim();
 
                 // Inside your App.java post route
-                return "<h1>Result: " + prediction + "</h1><br><a href='/analyzer.html'>Go Back to Analyzer</a>";
+                return predictionPage(prediction);
             } catch (Exception e) {
                 e.printStackTrace();
                 return "Error during classification: " + e.getMessage();
             }
         });
+    }
+
+    public static String predictionPage(String prediction) {
+        String color = prediction.equals("Gap") ? "#e74c3c" : "#2ecc71";
+
+        return "<!DOCTYPE html>" +
+                "<html>" +
+                "<head>" +
+                "<meta charset='UTF-8'>" +
+                "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+                "<title>Prediction Result</title>" +
+                "<style>" +
+                "body {" +
+                "    margin: 0;" +
+                "    font-family: 'Arial', sans-serif;" +
+                "    background: linear-gradient(135deg, #74ebd5, #acb6e5);" +
+                "    height: 100vh;" +
+                "    display: flex;" +
+                "    justify-content: center;" +
+                "    align-items: center;" +
+                "}" +
+                ".card {" +
+                "    background: white;" +
+                "    padding: 40px 30px;" +
+                "    border-radius: 16px;" +
+                "    box-shadow: 0 10px 30px rgba(0,0,0,0.15);" +
+                "    text-align: center;" +
+                "    width: 320px;" +
+                "}" +
+                "h1 {" +
+                "    margin: 0 0 20px 0;" +
+                "    font-size: 26px;" +
+                "}" +
+                ".btn {" +
+                "    display: inline-block;" +
+                "    margin-top: 20px;" +
+                "    padding: 12px 24px;" +
+                "    background: #007BFF;" +
+                "    color: white;" +
+                "    text-decoration: none;" +
+                "    border-radius: 8px;" +
+                "    transition: 0.3s ease;" +
+                "}" +
+                ".btn:hover {" +
+                "    background: #0056b3;" +
+                "    transform: translateY(-2px);" +
+                "}" +
+                ".badge {" +
+                "    display: inline-block;" +
+                "    padding: 6px 12px;" +
+                "    border-radius: 20px;" +
+                "    background: " + color + ";" +
+                "    color: white;" +
+                "    font-weight: bold;" +
+                "    margin-top: 10px;" +
+                "}" +
+                "</style>" +
+                "</head>" +
+                "<body>" +
+                "<div class='card'>" +
+                "<h1>Prediction Result</h1>" +
+                "<div class='badge'>" + prediction + "</div>" +
+                "<br>" +
+                "<a class='btn' href='/index.html'>Back to Form</a>" +
+                "</div>" +
+                "</body>" +
+                "</html>";
     }
 }

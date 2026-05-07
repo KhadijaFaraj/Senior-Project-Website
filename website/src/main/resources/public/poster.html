@@ -6,11 +6,6 @@
     <title>Research Poster | ERP Usage Gap</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; }
-        
-        /* Navigation Bar */
-        nav { background: #2c3e50; padding: 1rem; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; font-size: 1.1em; }
-        nav a:hover { color: #3498db; }
 
         .content { max-width: 1100px; margin: 30px auto; padding: 0 20px; text-align: center; }
         h2 { color: #2c3e50; margin-bottom: 10px; }
@@ -45,15 +40,19 @@
             nav a { margin: 0 5px; font-size: 0.85em; }
         }
     </style>
+    <link rel="stylesheet" href="navbar.css">
 </head>
 <body>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="dataset.html">Dataset Overview</a>
-    <a href="poster.html">Research Poster</a>
-    <a href="analyzer.html">Usage Analyzer</a>
-</nav>
+<div id="navbar"></div>
+
+<script>
+fetch("navbar.html")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+    });
+</script>
 
 <div class="content">
     <h2>Academic Research Poster</h2>
