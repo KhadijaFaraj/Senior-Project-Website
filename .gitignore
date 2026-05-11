@@ -6,8 +6,19 @@
 # Ignore Maven binaries and folders
 apache-maven-3.9.6/
 apache-maven-3.9.6-bin.zip
+<<<<<<< HEAD
+=======
+# Ignore Maven build files
+/website/target/
+/website/.mvn/
+/website/apache-maven-*/
+>>>>>>> b399490 (ignore)
 
 # OS / IDE files
 .DS_Store
 Thumbs.db
+<<<<<<< HEAD
 *.log
+=======
+*.log
+>>>>>>> b399490 (ignore)
