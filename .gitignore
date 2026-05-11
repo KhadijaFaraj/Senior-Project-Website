@@ -1,0 +1,9 @@
+# Ignore Maven build files
+/website/target/
+/website/.mvn/
+/website/apache-maven-*/
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+*.log

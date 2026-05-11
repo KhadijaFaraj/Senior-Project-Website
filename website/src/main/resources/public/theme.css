@@ -644,3 +644,15 @@ body {
     text-align: center;
   }
 }
+
+.footer {
+  background: var(--surface);       /* consistent surface color */
+  padding: var(--s6);               /* spacing consistent with sections */
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-light);         /* matches secondary text */
+  border-top: 1px solid var(--border);
+  box-shadow: var(--shadow);        /* consistent shadow effect */
+  border-radius: var(--radius) var(--radius) 0 0; /* round top corners only */
+  margin-top: var(--s6);
+}
