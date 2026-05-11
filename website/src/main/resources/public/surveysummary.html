@@ -44,15 +44,45 @@
 }
 </style>
 </head>
-
+<script src="mode.js"></script>
 <script src="motion.js"></script>
 <body>
 
 <div id="navbar"></div>
 <script>
+// mode.js
 fetch("navbar.html")
-.then(r=>r.text())
-.then(d=>document.getElementById("navbar").innerHTML=d);
+  .then(r => r.text())
+  .then(d => {
+    // Insert navbar
+    document.getElementById("navbar").innerHTML = d;
+
+    // Now the button exists
+    const toggle = document.getElementById("darkModeToggle");
+    const html = document.documentElement;
+
+    // Apply saved theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      html.setAttribute("data-theme", "dark");
+      toggle.textContent = "☀️ Light Mode";
+    } else {
+      toggle.textContent = "🌙 Dark Mode";
+    }
+
+    // Add click listener
+    toggle.addEventListener("click", () => {
+      if (html.getAttribute("data-theme") === "dark") {
+        html.removeAttribute("data-theme");
+        localStorage.setItem("theme", "light");
+        toggle.textContent = "🌙 Dark Mode";
+      } else {
+        html.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        toggle.textContent = "☀️ Light Mode";
+      }
+    });
+  });
 </script>
 
 <section class="hero">
@@ -100,7 +130,7 @@ fetch("navbar.html")
 
 <!-- LIKERT SECTION -->
 <div class="chart-card full">
-<h3>Perception & Attitude (Likert Summary)</h3>
+<h3>Perception & Attitude</h3>
 <canvas id="likert"></canvas>
 </div>
 
@@ -111,23 +141,39 @@ fetch("navbar.html")
 
 const palette = ["#2563eb","#7c3aed","#10b981","#f59e0b","#ef4444","#14b8a6"];
 
-/* helper */
+// Helper for bar charts
 function bar(id, labels, data){
   new Chart(document.getElementById(id), {
     type:"bar",
     data:{ labels, datasets:[{ data, backgroundColor:palette }]},
-    options:{ responsive:true }
+    options:{
+      responsive:true,
+      plugins:{
+        legend:{labels:{color:"#0f172a"}} // dark text for labels
+      },
+      scales:{
+        x:{ticks:{color:"#0f172a"}, grid:{color:"#e2e8f0"}}, // light grid
+        y:{ticks:{color:"#0f172a"}, grid:{color:"#e2e8f0"}}
+      }
+    }
   });
 }
 
+// Helper for doughnut charts
 function doughnut(id, labels, data){
   new Chart(document.getElementById(id), {
     type:"doughnut",
     data:{ labels, datasets:[{ data, backgroundColor:palette }]},
-    options:{ plugins:{legend:{position:"bottom"}} }
+    options:{
+      plugins:{
+        legend:{
+          position:"bottom",
+          labels:{color:"#0f172a"} // force dark text
+        }
+      }
+    }
   });
 }
-
 /* Q1 */
 doughnut("org",
 ["Supermarket","Clothing","Electronics","Pharmacy","Other"],

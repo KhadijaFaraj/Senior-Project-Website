@@ -7,15 +7,46 @@
     <link rel="stylesheet" href="theme.css" />
   </head>
 
+  <script src="mode.js"></script>
   <script src="motion.js"></script>
   <body>
     <!-- NAVBAR -->
     <div id="navbar"></div>
 
     <script>
+      // mode.js
       fetch("navbar.html")
         .then((r) => r.text())
-        .then((d) => (document.getElementById("navbar").innerHTML = d));
+        .then((d) => {
+          // Insert navbar
+          document.getElementById("navbar").innerHTML = d;
+
+          // Now the button exists
+          const toggle = document.getElementById("darkModeToggle");
+          const html = document.documentElement;
+
+          // Apply saved theme
+          const savedTheme = localStorage.getItem("theme");
+          if (savedTheme === "dark") {
+            html.setAttribute("data-theme", "dark");
+            toggle.textContent = "☀️ Light Mode";
+          } else {
+            toggle.textContent = "🌙 Dark Mode";
+          }
+
+          // Add click listener
+          toggle.addEventListener("click", () => {
+            if (html.getAttribute("data-theme") === "dark") {
+              html.removeAttribute("data-theme");
+              localStorage.setItem("theme", "light");
+              toggle.textContent = "🌙 Dark Mode";
+            } else {
+              html.setAttribute("data-theme", "dark");
+              localStorage.setItem("theme", "dark");
+              toggle.textContent = "☀️ Light Mode";
+            }
+          });
+        });
     </script>
 
     <!-- HERO -->

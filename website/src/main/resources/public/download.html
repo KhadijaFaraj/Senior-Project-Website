@@ -7,18 +7,48 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
 
   <script src="motion.js"></script>
   <body>
     <div id="navbar"></div>
+    <script src="mode.js"></script>
     <script>
+      // mode.js
       fetch("navbar.html")
         .then((r) => r.text())
-        .then((d) => (document.getElementById("navbar").innerHTML = d));
-    </script>
+        .then((d) => {
+          // Insert navbar
+          document.getElementById("navbar").innerHTML = d;
 
+          // Now the button exists
+          const toggle = document.getElementById("darkModeToggle");
+          const html = document.documentElement;
+
+          // Apply saved theme
+          const savedTheme = localStorage.getItem("theme");
+          if (savedTheme === "dark") {
+            html.setAttribute("data-theme", "dark");
+            toggle.textContent = "☀️ Light Mode";
+          } else {
+            toggle.textContent = "🌙 Dark Mode";
+          }
+
+          // Add click listener
+          toggle.addEventListener("click", () => {
+            if (html.getAttribute("data-theme") === "dark") {
+              html.removeAttribute("data-theme");
+              localStorage.setItem("theme", "light");
+              toggle.textContent = "🌙 Dark Mode";
+            } else {
+              html.setAttribute("data-theme", "dark");
+              localStorage.setItem("theme", "dark");
+              toggle.textContent = "☀️ Light Mode";
+            }
+          });
+        });
+    </script>
     <header class="hero">
       <h1>Downloads</h1>
       <p>Research materials and trained model</p>

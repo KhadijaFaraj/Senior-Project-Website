@@ -67,18 +67,99 @@ body {
 /* =========================
    DARK MODE
 ========================= */
+/* Always light, even in dark mode */
+.container .kpi-card,
+.container .chart-card,
+.container .form-container {
+  background: #fff !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06) !important;
+}
 
 [data-theme="dark"] {
-  --bg: #0b1220;
-  --surface: #111827;
-  --surface-2: #0f172a;
+  /* Main background & surfaces */
+  --bg: #0a0f1b;           /* very dark main background */
+  --surface: #111827;      /* form sections, cards */
+  --surface-2: #1f2937;    /* secondary surfaces like hover states, select dropdowns */
 
-  --text: #f8fafc;
-  --text-light: #94a3b8;
+  /* Text */
+  --text: #f0f4f8;         /* main readable text */
+  --text-light: #94a3b8;   /* secondary/muted text */
+  
+  /* Borders and shadows */
+  --border: rgba(255, 255, 255, 0.12);   /* subtle border for inputs & sections */
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.5); /* deeper shadow for floating elements */
 
-  --border: rgba(255, 255, 255, 0.08);
+  /* Brand / highlights */
+  --primary: #2563eb;       /* blue (hero gradient & buttons) */
+  --primary-dark: #1e40af;  /* hover for buttons */
+  --secondary: #7c3aed;     /* purple accents */
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+}
 
-  --shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+/* ================= Dark form tweaks ================= */
+[data-theme="dark"] .form-container,
+[data-theme="dark"] .form-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+[data-theme="dark"] label {
+  color: var(--text-light);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+[data-theme="dark"] button.btn {
+  background: var(--primary);
+  color: #fff;
+}
+
+[data-theme="dark"] button.btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Footer */
+[data-theme="dark"] .footer {
+  background: var(--surface);
+  color: var(--text-light);
+  border-top: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+/* Hero stays blue — untouched */
+[data-theme="dark"] .hero {
+  background: radial-gradient(circle at top, #2563eb, #1d4ed8 45%, var(--bg));
+  color: white;
+}
+
+[data-theme="dark"] .footer {
+  /* override dark mode variables specifically for footer */
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-top: 1px solid var(--border) !important;
+}
+
+[data-theme="dark"] .footer a {
+  color: var(--primary) !important;
 }
 
 /* =========================
@@ -123,6 +204,8 @@ body {
   backdrop-filter: blur(14px);
 
   border-bottom: 1px solid var(--border);
+  background: var(--surface);           /* use variable instead of fixed rgba */
+  color: var(--text);                   /* use text variable */
 }
 
 .navbar .brand {
