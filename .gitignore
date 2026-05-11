@@ -3,6 +3,10 @@
 /website/.mvn/
 /website/apache-maven-*/
 
+# Ignore Maven binaries and folders
+apache-maven-3.9.6/
+apache-maven-3.9.6-bin.zip
+
 # OS / IDE files
 .DS_Store
 Thumbs.db
